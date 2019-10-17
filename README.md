@@ -7,9 +7,9 @@ This is planned to be a free and open source cross-platform Java solitaire progr
 5. Golf
 6. Klondike
 7. La Belle Lucie
-8. Scorpion
-9. Spider
-10. Pyramid
+8. Pyramid
+9. Scorpion
+10. Spider
 11. TriPeaks
 12. Yukon
 
