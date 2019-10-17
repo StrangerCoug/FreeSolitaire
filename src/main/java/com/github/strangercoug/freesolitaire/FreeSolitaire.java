@@ -52,7 +52,7 @@ public class FreeSolitaire {
 		boolean validInput = false, playAgain = false;
 		String entry;
 		Game game = null;
-		ArrayList<Player> players;
+		Player player;
 		
 		while (true) {
 			do {
@@ -92,7 +92,7 @@ public class FreeSolitaire {
 			validInput = false;
 			
 			System.out.print("Enter name of player: ");
-			Player player = new Player(input.nextLine());
+			player = new Player(input.nextLine());
 
 			System.out.println("Good luck, " + player.getName() + "!");
 			
