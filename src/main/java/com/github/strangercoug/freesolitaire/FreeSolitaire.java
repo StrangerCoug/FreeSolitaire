@@ -28,12 +28,113 @@
  */
 package com.github.strangercoug.freesolitaire;
 
+import com.github.strangercoug.freesolitaire.games.Canfield;
+import com.github.strangercoug.freesolitaire.games.Clock;
+import com.github.strangercoug.freesolitaire.games.FortyThieves;
+import com.github.strangercoug.freesolitaire.games.FreeCell;
+import com.github.strangercoug.freesolitaire.games.Golf;
+import com.github.strangercoug.freesolitaire.games.LaBelleLucie;
+import com.github.strangercoug.freesolitaire.games.Pyramid;
+import com.github.strangercoug.freesolitaire.games.Scorpion;
+import com.github.strangercoug.freesolitaire.games.Spider;
+import com.github.strangercoug.freesolitaire.games.TriPeaks;
+import com.github.strangercoug.freesolitaire.games.Yukon;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Jeffrey Hope
  */
 public class FreeSolitaire {
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		Scanner input = new Scanner(System.in);
+		boolean validInput = false, playAgain = false;
+		String entry;
+		Game game = null;
+		ArrayList<Player> players;
+		
+		while (true) {
+			do {
+				System.out.println("Select game to play or type \"Q\" or \"QUIT\" to "
+						+" quit:\n"
+						+ "1. Baccarat\n"
+						+ "2. Big Six\n"
+						+ "3. Blackjack\n"
+						+ "4. Craps\n"
+						+ "5. Keno\n"
+						+ "6. Poker\n"
+						+ "7. Red Dog\n"
+						+ "8. Roulette\n"
+						+ "9. Video Poker\n"
+						+ "10. Video Poker\n"
+						+ "11. Video Poker\n"
+						+ "12. Video Poker");
+				entry = input.nextLine();
+				if (entry.equalsIgnoreCase("q") || entry.equalsIgnoreCase("quit")) {
+					input.close();
+					System.exit(0);
+				}
+				try {
+					int gameSelected = Integer.parseInt(entry);
+					if (gameSelected >= 1 && gameSelected <= 12)
+						validInput = true;
+					game = returnGame(gameSelected);
+				}
+				catch (NumberFormatException e) {
+					System.out.println("Invalid input.");
+				}
+				catch (IllegalArgumentException e) {
+					System.out.println("Invalid game number.");
+				}
+			} while (!validInput);
+			
+			validInput = false;
+			
+			System.out.print("Enter name of player: ");
+			Player player = new Player(input.nextLine());
+
+			System.out.println("Good luck, " + player.getName() + "!");
+			
+			do {
+				game.play(player);
+				validInput = false;
+				do {
+					System.out.print("Play again? (Y/N): ");
+					char selection = input.nextLine().charAt(0);
+					switch (selection) {
+						case 'Y': case 'y':
+							validInput = true;
+							playAgain = true;
+							break;
+						case 'N': case 'n':
+							validInput = true;
+							playAgain = false;
+							break;
+						default:
+							validInput = false;
+							System.out.println("Invalid selection.");
+					}
+				} while (!validInput);
+			} while (playAgain);
+		}
+	}
+	
+	private static Game returnGame(int i) {
+		switch (i) {
+			case 1: return new Canfield();
+			case 2: return new Clock();
+			case 3: return new FortyThieves();
+			case 4: return new FreeCell();
+			case 5: return new Golf();
+			case 6: return new Klondike();
+			case 7: return new LaBelleLucie();
+			case 8: return new Pyramid();
+			case 9: return new Scorpion();
+			case 10: return new Spider();
+			case 11: return new TriPeaks();
+			case 12: return new Yukon();
+			default: throw new IllegalArgumentException();
+		}
 	}
 }
