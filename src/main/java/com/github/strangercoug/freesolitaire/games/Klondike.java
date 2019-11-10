@@ -30,16 +30,39 @@ package com.github.strangercoug.freesolitaire.games;
 
 import com.github.strangercoug.freesolitaire.Game;
 import com.github.strangercoug.freesolitaire.Player;
+import com.github.strangercoug.freesolitaire.enums.CardRank;
+import com.github.strangercoug.freesolitaire.enums.CardSuit;
+import com.github.strangercoug.freesolitaire.objs.Card;
+import com.github.strangercoug.freesolitaire.objs.Deck;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Klondike extends Game {
-
+    Deck deck;
+    ArrayList<Card> stock; // cards are drawn from here
+    ArrayList<Card> talon; // cards drawn from the stock go here
+    ArrayList<ArrayList<Card>> foundations; // cards are built up here
+    ArrayList<ArrayList<Card>> tableau; // cards are initially dealt here
+    byte[] firstFaceUpCard;
+    
 	@Override
 	public void play(Player player) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		deck = new Deck();
+        foundations = new ArrayList<>(CardSuit.values().length);
+        for (CardSuit value : CardSuit.values()) {
+            foundations.add(new ArrayList<>(CardRank.values().length));
+        }
+        
+        tableau = new ArrayList<>(7);
+        firstFaceUpCard = new byte[7];
+        
+        
+        for (int i = 0; i < firstFaceUpCard.length; i++) {
+            firstFaceUpCard[i] = (byte) i;
+            tableau.add(new ArrayList<>(CardRank.values().length + i));
+        }
 	}
-	
 }
