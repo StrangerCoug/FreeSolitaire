@@ -65,4 +65,61 @@ public class Klondike extends Game {
             tableau.add(new ArrayList<>(CardRank.values().length + i));
         }
 	}
+	
+	/**
+	 * If the topmost card of a tableau pile is face down, flip it face up.
+	 * 
+	 * @param column the column with the card to flip 
+	 */
+	public void flipCard(byte column) {
+		if (firstFaceUpCard[column] > 0 &&
+				foundations.get(column).size() == firstFaceUpCard[column] + 1)
+			firstFaceUpCard[column]--;
+	}
+	
+	public void drawFromTalon() {
+		
+	}
+	
+	/**
+	 * Finds whether the top {@code cardsToMove} cards in {@code srcCol} can be
+	 * legally moved to {@code destCol}. It does not automatically execute the move.
+	 * 
+	 * If {@destCol} is empty, then the bottommost card of the pile being moved must
+	 * be a king. Otherwise, the top card of {@destCol} must be one rank higher than
+	 * and the opposite color of the bottommost card of the pile being moved.
+	 * 
+	 * If any face-down cards are involved, the method returns false.
+	 * 
+	 * @param srcCol the column number to move cards from
+	 * @param destCol the column number to move cards to
+	 * @param cardsToMove the number of cards to move
+	 * @return true if move is legal; false otherwise
+	 */
+	public boolean canMoveCards (ArrayList<Card> srcCol, ArrayList<Card> destCol,
+			byte cardsToMove) {
+		return false;
+	}
+	
+	/**
+	 * Finds whether the top card of a tableau column can be played to a foundation.
+	 * 
+	 * @param column the column number to play from
+	 * @param foundation the foundation to play to
+	 * @return true if the move is legal; false otherwise
+	 */
+	public boolean canPlayToFoundation (ArrayList<Card> column,
+			ArrayList<Card> foundation) {
+		if (column.isEmpty())
+			return false;
+		
+		Card tableauCard = column.get(column.size()-1);
+		if (foundation.isEmpty())
+			return tableauCard.getRank() == CardRank.ACE;
+		
+		Card foundationCard = foundation.get(foundation.size()-1);
+		return tableauCard.getSuit() == foundationCard.getSuit()
+				&& tableauCard.getRank().ordinal()
+				- foundationCard.getRank().ordinal() == 1;
+	}
 }
