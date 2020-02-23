@@ -33,13 +33,13 @@ import com.github.strangercoug.freesolitaire.games.Clock;
 import com.github.strangercoug.freesolitaire.games.FortyThieves;
 import com.github.strangercoug.freesolitaire.games.FreeCell;
 import com.github.strangercoug.freesolitaire.games.Golf;
+import com.github.strangercoug.freesolitaire.games.Klondike;
 import com.github.strangercoug.freesolitaire.games.LaBelleLucie;
 import com.github.strangercoug.freesolitaire.games.Pyramid;
 import com.github.strangercoug.freesolitaire.games.Scorpion;
 import com.github.strangercoug.freesolitaire.games.Spider;
 import com.github.strangercoug.freesolitaire.games.TriPeaks;
 import com.github.strangercoug.freesolitaire.games.Yukon;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
