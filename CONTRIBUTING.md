@@ -1,6 +1,6 @@
 # Contributing guidelines
 Before contributing, please read the following:
-* If you have a bug or a feature request, first search the issues tab to make sure somebody hasn't already opened an issue describing your bug or feature request. If it's not there, then open up an issue and fill out the template as appropriate to your issue. Please do not open an issue simply to ask a question; I'm generally available via Discord or e-mail.
+* If you have a bug or a feature request, first search the issues tab to make sure somebody hasn't already opened an issue describing your bug or feature request. If it's not there, then open up an issue and fill out the template as appropriate to your issue. Please do not open an issue simply to ask a question; instead, go to the [Discussions](https://github.com/StrangerCoug/FreeSolitaire/discussions) tab.
 * If your feature request is for a new game, we generally need a clear description of how the game is played from a third party. (A good source that I recommend is [Solitaire Central](http://www.solitairecentral.com/rules/).) This is to ensure that the game is sufficiently well-known to warrant inclusion in the game.
 
 ## Style conventions
