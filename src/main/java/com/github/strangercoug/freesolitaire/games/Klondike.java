@@ -41,31 +41,30 @@ import java.util.ArrayList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Klondike extends Game {
-    Deck deck;
-    ArrayList<Card> stock; // cards are drawn from here
-    ArrayList<Card> talon; // cards drawn from the stock go here
-    ArrayList<ArrayList<Card>> foundations; // cards are built up here
-    ArrayList<ArrayList<Card>> tableau; // cards are initially dealt here
-    byte[] firstFaceUpCard;
-    
+	Deck deck;
+	ArrayList<Card> stock; // cards are drawn from here
+	ArrayList<Card> talon; // cards drawn from the stock go here
+	ArrayList<ArrayList<Card>> foundations; // cards are built up here
+	ArrayList<ArrayList<Card>> tableau; // cards are initially dealt here
+	byte[] firstFaceUpCard;
+
 	@Override
 	public void play(Player player) {
 		deck = new Deck();
-        foundations = new ArrayList<>(CardSuit.values().length);
-        for (CardSuit value : CardSuit.values()) {
-            foundations.add(new ArrayList<>(CardRank.values().length));
-        }
-        
-        tableau = new ArrayList<>(7);
-        firstFaceUpCard = new byte[7];
-        
-        
-        for (int i = 0; i < firstFaceUpCard.length; i++) {
-            firstFaceUpCard[i] = (byte) i;
-            tableau.add(new ArrayList<>(CardRank.values().length + i));
-        }
+		foundations = new ArrayList<>(CardSuit.values().length);
+		for (CardSuit value : CardSuit.values()) {
+			foundations.add(new ArrayList<>(CardRank.values().length));
+		}
+
+		tableau = new ArrayList<>(7);
+		firstFaceUpCard = new byte[7];
+
+		for (int i = 0; i < firstFaceUpCard.length; i++) {
+			firstFaceUpCard[i] = (byte) i;
+			tableau.add(new ArrayList<>(CardRank.values().length + i));
+		}
 	}
-	
+
 	/**
 	 * If the topmost card of a tableau pile is face down, flip it face up.
 	 * 
@@ -76,11 +75,11 @@ public class Klondike extends Game {
 				foundations.get(column).size() == firstFaceUpCard[column] + 1)
 			firstFaceUpCard[column]--;
 	}
-	
+
 	public void drawFromTalon() {
-		
+
 	}
-	
+
 	/**
 	 * Finds whether the top {@code cardsToMove} cards in {@code srcCol} can be
 	 * legally moved to {@code destCol}. It does not automatically execute the move.
@@ -100,7 +99,7 @@ public class Klondike extends Game {
 			byte cardsToMove) {
 		return false;
 	}
-	
+
 	/**
 	 * Finds whether the top card of a tableau column can be played to a foundation.
 	 * 
@@ -112,11 +111,11 @@ public class Klondike extends Game {
 			ArrayList<Card> foundation) {
 		if (column.isEmpty())
 			return false;
-		
+
 		Card tableauCard = column.get(column.size()-1);
 		if (foundation.isEmpty())
 			return tableauCard.getRank() == CardRank.ACE;
-		
+
 		Card foundationCard = foundation.get(foundation.size()-1);
 		return tableauCard.getSuit() == foundationCard.getSuit()
 				&& tableauCard.getRank().ordinal()

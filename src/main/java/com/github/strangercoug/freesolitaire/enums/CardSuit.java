@@ -33,5 +33,5 @@ package com.github.strangercoug.freesolitaire.enums;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public enum CardSuit {
-    CLUBS, DIAMONDS, HEARTS, SPADES
+	CLUBS, DIAMONDS, HEARTS, SPADES
 }
