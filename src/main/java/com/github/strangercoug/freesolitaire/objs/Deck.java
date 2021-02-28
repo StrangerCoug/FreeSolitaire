@@ -38,11 +38,11 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected LinkedList<Card> deck;
+	protected LinkedList<Card> cards;
 	protected final int NUM_DECKS;
 	
 	public Deck(int numDecks) {
-		deck = new LinkedList<>();
+		cards = new LinkedList<>();
 		NUM_DECKS = numDecks;
 	}
 	
@@ -60,7 +60,7 @@ public class Deck {
 		
 		for (int i = 0; i < NUM_DECKS; i++) {
 			for (int j = 0; j < 52; i++)
-				deck.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[i/4], suits[i%4]));
 		}
 	}
 	
@@ -70,10 +70,20 @@ public class Deck {
 	 * wrong, we fall back to this.
 	 */
 	public void shuffleDeck() {
-		Collections.shuffle(deck);
+		for (int i = cards.size() - 1; i > 0; i--) {
+			Card temp = cards.get(i);
+			int j = rng.nextInt(i + 1); /* Without the +1 this becomes a Sattolo shuffle,
+			                             * which we don't want */
+			cards.set(i, cards.get(j));
+			cards.set(j, temp);
+		}
 	}
 	
 	public Card dealCard() {
-		return deck.pop();
+		return cards.pop();
+	}
+
+	public boolean isEmpty() {
+		return cards.size() == 0;
 	}
 }
