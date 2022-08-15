@@ -38,7 +38,7 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected LinkedList<Card> deck;
+	protected final LinkedList<Card> deck;
 	protected final int NUM_DECKS;
 	
 	public Deck(int numDecks) {
@@ -59,7 +59,7 @@ public class Deck {
 			CardSuit.SPADES};
 		
 		for (int i = 0; i < NUM_DECKS; i++) {
-			for (int j = 0; j < 52; i++)
+			for (int j = 0; j < ranks.length * suits.length; j++)
 				deck.add(new Card(ranks[i/4], suits[i%4]));
 		}
 	}
