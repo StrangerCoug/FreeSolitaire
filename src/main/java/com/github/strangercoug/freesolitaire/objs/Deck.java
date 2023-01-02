@@ -32,7 +32,7 @@ package com.github.strangercoug.freesolitaire.objs;
 
 import com.github.strangercoug.freesolitaire.enums.CardRank;
 import com.github.strangercoug.freesolitaire.enums.CardSuit;
-import java.util.Collections;
+
 import java.util.LinkedList;
 
 /**
@@ -40,7 +40,7 @@ import java.util.LinkedList;
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
 public class Deck {
-	protected LinkedList<Card> cards;
+	protected final LinkedList<Card> cards;
 	protected final int NUM_DECKS;
 	
 	public Deck(int numDecks) {

@@ -114,7 +114,6 @@ public class FreeSolitaire {
 							playAgain = false;
 						}
 						default -> {
-							validInput = false;
 							System.out.println("Invalid selection.");
 						}
 					}
