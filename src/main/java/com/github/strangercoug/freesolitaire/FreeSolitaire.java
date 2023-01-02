@@ -56,20 +56,20 @@ public class FreeSolitaire {
 		
 		while (true) {
 			do {
-				System.out.println("Select game to play or type \"Q\" or \"QUIT\" to "
-						+" quit:\n"
-						+ "1. Baccarat\n"
-						+ "2. Big Six\n"
-						+ "3. Blackjack\n"
-						+ "4. Craps\n"
-						+ "5. Keno\n"
-						+ "6. Poker\n"
-						+ "7. Red Dog\n"
-						+ "8. Roulette\n"
-						+ "9. Video Poker\n"
-						+ "10. Video Poker\n"
-						+ "11. Video Poker\n"
-						+ "12. Video Poker");
+				System.out.println("""
+						Select game to play or type "Q" or "QUIT" to  quit:
+						1. Baccarat
+						2. Big Six
+						3. Blackjack
+						4. Craps
+						5. Keno
+						6. Poker
+						7. Red Dog
+						8. Roulette
+						9. Video Poker
+						10. Video Poker
+						11. Video Poker
+						12. Video Poker""");
 				entry = input.nextLine();
 				if (entry.equalsIgnoreCase("q") || entry.equalsIgnoreCase("quit")) {
 					input.close();
@@ -103,17 +103,18 @@ public class FreeSolitaire {
 					System.out.print("Play again? (Y/N): ");
 					char selection = input.nextLine().charAt(0);
 					switch (selection) {
-						case 'Y': case 'y':
+						case 'Y', 'y' -> {
 							validInput = true;
 							playAgain = true;
-							break;
-						case 'N': case 'n':
+						}
+						case 'N', 'n' -> {
 							validInput = true;
 							playAgain = false;
-							break;
-						default:
+						}
+						default -> {
 							validInput = false;
 							System.out.println("Invalid selection.");
+						}
 					}
 				} while (!validInput);
 			} while (playAgain);
@@ -121,20 +122,20 @@ public class FreeSolitaire {
 	}
 	
 	private static Game returnGame(int i) {
-		switch (i) {
-			case 1: return new Canfield();
-			case 2: return new Clock();
-			case 3: return new FortyThieves();
-			case 4: return new FreeCell();
-			case 5: return new Golf();
-			case 6: return new Klondike();
-			case 7: return new LaBelleLucie();
-			case 8: return new Pyramid();
-			case 9: return new Scorpion();
-			case 10: return new Spider();
-			case 11: return new TriPeaks();
-			case 12: return new Yukon();
-			default: throw new IllegalArgumentException();
-		}
+		return switch (i) {
+			case 1 -> new Canfield();
+			case 2 -> new Clock();
+			case 3 -> new FortyThieves();
+			case 4 -> new FreeCell();
+			case 5 -> new Golf();
+			case 6 -> new Klondike();
+			case 7 -> new LaBelleLucie();
+			case 8 -> new Pyramid();
+			case 9 -> new Scorpion();
+			case 10 -> new Spider();
+			case 11 -> new TriPeaks();
+			case 12 -> new Yukon();
+			default -> throw new IllegalArgumentException();
+		};
 	}
 }
