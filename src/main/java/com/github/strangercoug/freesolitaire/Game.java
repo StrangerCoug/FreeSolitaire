@@ -40,14 +40,4 @@ public abstract class Game {
 	Player player;
 	
 	public abstract void play(Player player);
-	
-	/**
-	 * Often suit color matters in solitaire games, not only the suits themselves.
-	 * 
-	 * @param suit the suit whose color is to be checked
-	 * @return true for black suits; false for red suits
-	 */
-	public boolean isBlack(CardSuit suit) {
-		return suit == CardSuit.CLUBS || suit == CardSuit.SPADES;
-	}
 }

@@ -51,7 +51,8 @@ import java.util.Scanner;
 public class FreeSolitaire {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		boolean validInput = false, playAgain = false;
+		boolean validInput = false;
+		boolean playAgain = false;
 		String entry;
 		Game game = null;
 		Player player;
@@ -113,9 +114,7 @@ public class FreeSolitaire {
 							validInput = true;
 							playAgain = false;
 						}
-						default -> {
-							System.out.println("Invalid selection.");
-						}
+						default -> System.out.println("Invalid selection.");
 					}
 				} while (!validInput);
 			} while (playAgain);

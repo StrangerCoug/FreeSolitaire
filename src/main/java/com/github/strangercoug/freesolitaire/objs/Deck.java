@@ -33,6 +33,7 @@ package com.github.strangercoug.freesolitaire.objs;
 import com.github.strangercoug.freesolitaire.enums.CardRank;
 import com.github.strangercoug.freesolitaire.enums.CardSuit;
 
+import java.security.SecureRandom;
 import java.util.LinkedList;
 
 /**
@@ -42,6 +43,7 @@ import java.util.LinkedList;
 public class Deck {
 	protected final LinkedList<Card> cards;
 	protected final int NUM_DECKS;
+	private final SecureRandom rng = new SecureRandom();
 	
 	public Deck(int numDecks) {
 		cards = new LinkedList<>();
@@ -65,7 +67,7 @@ public class Deck {
 				cards.add(new Card(ranks[i/4], suits[i%4]));
 		}
 	}
-	
+
 	/* TODO: This is fine for alpha and beta testing, but at a later point I
 	 * would like to be able to detect whether there is an Internet connection
 	 * and use the random.org API to shuffle if possible. If something goes

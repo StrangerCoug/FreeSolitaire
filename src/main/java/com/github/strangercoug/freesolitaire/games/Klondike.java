@@ -85,11 +85,11 @@ public class Klondike extends Game {
 	/**
 	 * Finds whether the top {@code cardsToMove} cards in {@code srcCol} can be
 	 * legally moved to {@code destCol}. It does not automatically execute the move.
-	 * 
+	 * <p>
 	 * If {@code destCol} is empty, then the bottommost card of the pile being moved must
 	 * be a king. Otherwise, the top card of {@code destCol} must be one rank higher than
 	 * and the opposite color of the bottommost card of the pile being moved.
-	 * 
+	 * <p>
 	 * If any face-down cards are involved, the method returns false.
 	 * 
 	 * @param srcCol the column number to move cards from
