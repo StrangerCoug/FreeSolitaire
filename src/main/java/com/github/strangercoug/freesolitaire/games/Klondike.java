@@ -79,7 +79,7 @@ public class Klondike extends Game {
 	}
 
 	public void drawFromTalon() {
-
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	/**
