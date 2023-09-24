@@ -1,4 +1,4 @@
-package com.github.strangercoug.freesolitaire.enums;
+package com.github.strangercoug.freesolitaire.objs;
 
 import com.github.strangercoug.freesolitaire.objs.Card;
 import com.github.strangercoug.freesolitaire.objs.Deck;

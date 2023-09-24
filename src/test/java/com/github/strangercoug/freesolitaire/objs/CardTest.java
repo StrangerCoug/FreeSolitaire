@@ -1,6 +1,8 @@
-package com.github.strangercoug.freesolitaire.enums;
+package com.github.strangercoug.freesolitaire.objs;
 
 import com.github.strangercoug.freesolitaire.Player;
+import com.github.strangercoug.freesolitaire.enums.CardRank;
+import com.github.strangercoug.freesolitaire.enums.CardSuit;
 import com.github.strangercoug.freesolitaire.objs.Card;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
