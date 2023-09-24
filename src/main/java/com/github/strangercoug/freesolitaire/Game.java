@@ -30,8 +30,6 @@
  */
 package com.github.strangercoug.freesolitaire;
 
-import com.github.strangercoug.freesolitaire.enums.CardSuit;
-
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
