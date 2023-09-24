@@ -42,12 +42,12 @@ import java.util.LinkedList;
  */
 public class Deck {
 	protected final LinkedList<Card> cards;
-	protected final int NUM_DECKS;
+	protected final int numDecks;
 	private final SecureRandom rng = new SecureRandom();
 	
 	public Deck(int numDecks) {
 		cards = new LinkedList<>();
-		NUM_DECKS = numDecks;
+		this.numDecks = numDecks;
 	}
 	
 	public Deck() {
@@ -55,16 +55,16 @@ public class Deck {
 	}
 	
 	public void populateDeck() {
-		CardRank[] ranks = {CardRank.TWO, CardRank.THREE, CardRank.FOUR,
-			CardRank.FIVE, CardRank.SIX, CardRank.SEVEN, CardRank.EIGHT,
-			CardRank.NINE, CardRank.TEN, CardRank.JACK, CardRank.QUEEN,
-			CardRank.KING, CardRank.ACE};
+		CardRank[] ranks = {CardRank.ACE, CardRank.TWO, CardRank.THREE,
+				CardRank.FOUR, CardRank.FIVE, CardRank.SIX, CardRank.SEVEN,
+				CardRank.EIGHT, CardRank.NINE, CardRank.TEN, CardRank.JACK,
+				CardRank.QUEEN, CardRank.KING};
 		CardSuit[] suits = {CardSuit.CLUBS, CardSuit.DIAMONDS, CardSuit.HEARTS,
 			CardSuit.SPADES};
-		
-		for (int i = 0; i < NUM_DECKS; i++) {
+
+		for (int i = 0; i < numDecks; i++) {
 			for (int j = 0; j < ranks.length * suits.length; j++)
-				cards.add(new Card(ranks[i/4], suits[i%4]));
+				cards.add(new Card(ranks[j%ranks.length], suits[j/ranks.length]));
 		}
 	}
 
@@ -88,6 +88,6 @@ public class Deck {
 	}
 
 	public boolean isEmpty() {
-		return cards.size() == 0;
+		return cards.isEmpty();
 	}
 }
