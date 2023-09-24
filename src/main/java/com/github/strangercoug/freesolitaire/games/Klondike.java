@@ -37,6 +37,7 @@ import com.github.strangercoug.freesolitaire.enums.CardSuit;
 import com.github.strangercoug.freesolitaire.objs.Card;
 import com.github.strangercoug.freesolitaire.objs.Deck;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -97,8 +98,8 @@ public class Klondike extends Game {
 	 * @param cardsToMove the number of cards to move
 	 * @return true if move is legal; false otherwise
 	 */
-	public boolean canMoveCards (ArrayList<Card> srcCol, ArrayList<Card> destCol,
-			byte cardsToMove) {
+	public boolean canMoveCards (List<Card> srcCol, List<Card> destCol,
+	                             byte cardsToMove) {
 		return false;
 	}
 
@@ -109,8 +110,8 @@ public class Klondike extends Game {
 	 * @param foundation the foundation to play to
 	 * @return true if the move is legal; false otherwise
 	 */
-	public boolean canPlayToFoundation (ArrayList<Card> column,
-			ArrayList<Card> foundation) {
+	public boolean canPlayToFoundation (List<Card> column,
+			List<Card> foundation) {
 		if (column.isEmpty())
 			return false;
 
