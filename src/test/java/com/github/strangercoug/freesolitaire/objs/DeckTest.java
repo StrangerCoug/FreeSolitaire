@@ -1,7 +1,5 @@
 package com.github.strangercoug.freesolitaire.objs;
 
-import com.github.strangercoug.freesolitaire.objs.Card;
-import com.github.strangercoug.freesolitaire.objs.Deck;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
