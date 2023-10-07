@@ -117,11 +117,11 @@ public class Klondike extends Game {
 
 		Card tableauCard = column.get(column.size()-1);
 		if (foundation.isEmpty())
-			return tableauCard.getRank() == CardRank.ACE;
+			return tableauCard.rank() == CardRank.ACE;
 
 		Card foundationCard = foundation.get(foundation.size()-1);
-		return tableauCard.getSuit() == foundationCard.getSuit()
-				&& tableauCard.getRank().ordinal()
-				- foundationCard.getRank().ordinal() == 1;
+		return tableauCard.suit() == foundationCard.suit()
+				&& tableauCard.rank().ordinal()
+				- foundationCard.rank().ordinal() == 1;
 	}
 }

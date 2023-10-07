@@ -36,35 +36,16 @@ import java.util.Objects;
 
 /**
  *
+ * @param rank  the card's rank
+ * @param suit  the card's suit
+ *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
-public class Card implements Comparable<Card> {
-	private final CardRank rank;
-	private final CardSuit suit;
-	
-	private final String[] rankNames = {"Ace", "Two", "Three", "Four", "Five", "Six",
+public record Card(CardRank rank, CardSuit suit) implements Comparable<Card> {
+	private static final String[] rankNames = {"Ace", "Two", "Three", "Four", "Five", "Six",
 		"Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
-	private final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades"};
+	private static final String[] suitNames = {"Clubs", "Diamonds", "Hearts", "Spades"};
 	
-	/**
-	 * Sole constructor.
-	 * 
-	 * @param rank  the card's rank
-	 * @param suit  the card's suit
-	 */
-	public Card(CardRank rank, CardSuit suit) {
-		this.rank = rank;
-		this.suit = suit;
-	}
-	
-	public CardRank getRank() {
-		return rank;
-	}
-	
-	public CardSuit getSuit() {
-		return suit;
-	}
-
 	/**
 	 * Checks whether this card outranks the card in the argument. This method,
 	 * unlike {@code compareTo(Card o)}, ignores suit, eliminating some of the
@@ -78,7 +59,7 @@ public class Card implements Comparable<Card> {
 		if (other == null)
 			throw new NullPointerException();
 		
-		return this.rank.ordinal() > other.getRank().ordinal();
+		return this.rank.ordinal() > other.rank().ordinal();
 	}
 	
 	@Override
@@ -99,7 +80,7 @@ public class Card implements Comparable<Card> {
 		
 		final Card other = (Card) obj;
 		
-		return this.rank == other.getRank() && this.suit == other.getSuit();
+		return this.rank == other.rank() && this.suit == other.suit();
 	}
 	
 	/**
@@ -124,8 +105,8 @@ public class Card implements Comparable<Card> {
 			throw new NullPointerException();
 		
 		return (this.suit.ordinal() * CardRank.values().length +
-				this.rank.ordinal()) - (other.getSuit().ordinal() *
-				CardRank.values().length + other.getRank().ordinal());
+				this.rank.ordinal()) - (other.suit().ordinal() *
+				CardRank.values().length + other.rank().ordinal());
 	}
 	
 	@Override
