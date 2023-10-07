@@ -42,13 +42,23 @@ import com.github.strangercoug.freesolitaire.games.Scorpion;
 import com.github.strangercoug.freesolitaire.games.Spider;
 import com.github.strangercoug.freesolitaire.games.TriPeaks;
 import com.github.strangercoug.freesolitaire.games.Yukon;
+
+import java.security.SecureRandom;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
 
 /**
  *
  * @author Jeffrey Hope
  */
 public class FreeSolitaire {
+	/**
+	 * Backup RNG for offline use. Using the random.org API should be preferred
+	 * to calling this RNG, especially if it is necessary to shuffle a large
+	 * number of cards.
+	 */
+	public static final RandomGenerator rng = new SecureRandom();
+
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		boolean validInput = false;
