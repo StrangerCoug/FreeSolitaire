@@ -42,22 +42,47 @@ import com.github.strangercoug.freesolitaire.games.Scorpion;
 import com.github.strangercoug.freesolitaire.games.Spider;
 import com.github.strangercoug.freesolitaire.games.TriPeaks;
 import com.github.strangercoug.freesolitaire.games.Yukon;
+import lombok.extern.java.Log;
 
+import java.nio.ByteBuffer;
+import java.security.DrbgParameters;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Scanner;
 import java.util.random.RandomGenerator;
+
+import static java.security.DrbgParameters.Capability.PR_AND_RESEED;
 
 /**
  *
  * @author Jeffrey Hope
  */
+@Log
 public class FreeSolitaire {
 	/**
 	 * Backup RNG for offline use. Using the random.org API should be preferred
 	 * to calling this RNG, especially if it is necessary to shuffle a large
 	 * number of cards.
 	 */
-	public static final RandomGenerator rng = new SecureRandom();
+	public static final RandomGenerator rng;
+
+	static {
+		RandomGenerator rng1;
+		byte[] personalizationString = ByteBuffer.allocate(Long.BYTES).putLong(System.currentTimeMillis()).array();
+
+		log.info("Getting SecureRandom instance for the backup RNG...");
+		try {
+			rng1 = SecureRandom.getInstance("DRBG",
+					DrbgParameters.instantiation(256, PR_AND_RESEED, personalizationString));
+			log.info("Successfully got defined SecureRandom instance for the backup RNG.");
+		} catch (NoSuchAlgorithmException e) {
+			log.warning("Unable to get the defined SecureRandom instance for the backup RNG; using the default " +
+					"SecureRandom instance. This instance may have less than the desired bit security strength and may " +
+					"not support prediction resistance or reseeding.");
+			rng1 = new SecureRandom();
+		}
+		rng = rng1;
+	}
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
