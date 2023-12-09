@@ -31,10 +31,13 @@
 package com.github.strangercoug.freesolitaire;
 
 
+import lombok.Getter;
+
 /**
  *
  * @author Jeffrey Hope <strangercoug@hotmail.com>
  */
+@Getter
 public class Player {
 	private final String name;
 	
@@ -45,8 +48,5 @@ public class Player {
 	public Player() {
 		this("Default");
 	}
-	
-	public String getName() {
-		return name;
-	}
+
 }

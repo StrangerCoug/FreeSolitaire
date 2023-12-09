@@ -91,23 +91,23 @@ public class FreeSolitaire {
 		String entry;
 		Game game = null;
 		Player player;
-		
+
 		while (true) {
 			do {
 				System.out.println("""
 						Select game to play or type "Q" or "QUIT" to  quit:
-						1. Baccarat
-						2. Big Six
-						3. Blackjack
-						4. Craps
-						5. Keno
-						6. Poker
-						7. Red Dog
-						8. Roulette
-						9. Video Poker
-						10. Video Poker
-						11. Video Poker
-						12. Video Poker""");
+						1. Canfield
+						2. Clock
+						3. Forty Thieves
+						4. FreeCell
+						5. Golf
+						6. Klondike
+						7. La Belle Lucie
+						8. Pyramid
+						9. Scorpion
+						10. Spider
+						11. TriPeaks
+						12. Yukon""");
 				entry = input.nextLine();
 				if (entry.equalsIgnoreCase("q") || entry.equalsIgnoreCase("quit")) {
 					input.close();
@@ -126,14 +126,14 @@ public class FreeSolitaire {
 					System.out.println("Invalid game number.");
 				}
 			} while (!validInput);
-			
+
 			validInput = false;
-			
+
 			System.out.print("Enter name of player: ");
 			player = new Player(input.nextLine());
 
 			System.out.println("Good luck, " + player.getName() + "!");
-			
+
 			do {
 				game.play(player);
 				validInput = false;
